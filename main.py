@@ -10,7 +10,7 @@ import tensorflow as tf
 # Load trained models and scaler with full paths
 iso_forest = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/iso_forest.pkl")
 oc_svm = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/oc_svm.pkl")
-autoencoder = tf.keras.models.load_model("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/autoencoder.keras")
+autoencoder = tf.keras.models.load_model("D:\Projects\Cyber_attack_20000\Sources\Cyber-Security-Anomaly-Detection-System/autoencoder.keras")
 scaler = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/scaler.pkl")
 
 # Define the 25 feature columns
@@ -125,7 +125,7 @@ if user_data is not None:
     st.write("Anomaly Confirmed by One-Class SVM, Calculating Severity...")
 
     # Step 3: Autoencoder
-    reconstructed = autoencoder.predict([user_data])
+    reconstructed = autoencoder.predict(np.array(user_data).reshape(1, -1))
     error_score = np.mean(np.power(user_data - reconstructed, 2))
 
     def categorize_severity(error):
