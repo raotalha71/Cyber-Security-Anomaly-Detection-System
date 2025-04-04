@@ -1,13 +1,16 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Optional: disable oneDNN notice
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
 import tensorflow as tf
-#here you will start the things 
-# Load trained models and scaler
+
+# Load trained models and scaler with full paths
 iso_forest = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/iso_forest.pkl")
 oc_svm = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/oc_svm.pkl")
-autoencoder = tf.keras.models.load_model("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/autoencoder.h5")
+autoencoder = tf.keras.models.load_model("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/autoencoder.keras")
 scaler = joblib.load("D:/Projects/Cyber_attack_20000/Sources/Cyber-Security-Anomaly-Detection-System/scaler.pkl")
 
 # Define the 25 feature columns
